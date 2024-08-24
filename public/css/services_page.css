@@ -1,0 +1,61 @@
+/*-------------services_page START---------------------*/
+.services_page {
+  margin: 80px 0;
+  align-items: center; }
+  .services_page .title_section {
+    border-left: 1px solid var(--text_grayed_out2);
+    height: 136px; }
+    .services_page .title_section .inner_wrapper {
+      width: var(--default_width);
+      height: 100%;
+      box-sizing: border-box;
+      padding: 0 0 0 25px;
+      position: relative;
+      justify-content: center; }
+      .services_page .title_section .inner_wrapper .background_text {
+        font-size: 160px;
+        top: 76px !important;
+        line-height: 0px !important;
+        left: 0 !important; }
+      .services_page .title_section .inner_wrapper .title_text {
+        font-family: 'UnboundedBlack', sans-serif;
+        font-size: 35px;
+        font-weight: normal;
+        color: var(--text_black_default);
+        text-transform: uppercase;
+        margin: 0 0 15px 0; }
+      .services_page .title_section .inner_wrapper .desc_text {
+        font-family: 'GilroyMedium', sans-serif;
+        font-size: 18px;
+        color: var(--text_black_default); }
+  .services_page .nav_sec_main {
+    margin: 50px 0 0 0 !important; }
+  @media (max-width: 1550px) {
+    .services_page .title_section .inner_wrapper .title_text {
+      font-size: 30px; } }
+  @media (max-width: 1360px) {
+    .services_page .title_section .inner_wrapper .title_text {
+      font-size: 26px; }
+    .services_page .title_section .inner_wrapper .desc_text {
+      font-size: 17px; } }
+  @media (max-width: 1199px) {
+    .services_page .title_section .inner_wrapper .title_text {
+      font-size: 24px; } }
+  @media (max-width: 1049px) {
+    .services_page .title_section .inner_wrapper .title_text {
+      font-size: 22px; }
+    .services_page .title_section .inner_wrapper .desc_text {
+      font-size: 15px; } }
+  @media (max-width: 889px) {
+    .services_page .title_section .inner_wrapper .title_text {
+      font-size: 20px; } }
+  @media (max-width: 729px) {
+    .services_page .title_section .inner_wrapper .title_text {
+      font-size: 18px; } }
+  @media (max-width: 424px) {
+    .services_page .title_section .inner_wrapper .title_text {
+      font-size: 16px; }
+    .services_page .title_section .inner_wrapper .desc_text {
+      font-size: 14px; } }
+
+/*-------------services_page END---------------------*/

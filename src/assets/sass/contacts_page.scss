@@ -1,0 +1,44 @@
+/*----------------contacts_page START--------------------------------*/
+#contacts_page{
+
+    .banner_image{
+
+        img{
+            display: none;
+        }
+
+        iframe{
+            display: block;
+        }
+    }
+
+    &.active{
+    
+        .banner_image::before{
+            content: unset;
+        }
+    }
+
+    @media (max-width: 729px) {
+
+        .banner_image{
+
+            img{
+                display: block;
+            }
+
+            iframe{
+                display: none;
+            }
+        }
+
+        &.active{
+    
+            .banner_image::before{
+                content: '';
+            }
+        }
+    }
+
+}
+/*----------------contacts_page END--------------------------------*/

@@ -1,0 +1,31 @@
+/*----------------about_us_page START--------------------------------*/
+.about_us_page {
+  align-items: center;
+  margin-top: 65px; }
+  .about_us_page .inner_wrapper {
+    width: var(--default_width); }
+    .about_us_page .inner_wrapper .lower_column {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0 144.5px; }
+      .about_us_page .inner_wrapper .lower_column p, .about_us_page .inner_wrapper .lower_column ul li {
+        font-family: 'GilroyMedium', sans-serif;
+        font-size: 16px;
+        color: var(--text_black_default);
+        line-height: 23px;
+        letter-spacing: 0.05px;
+        text-align: justify;
+        tab-size: 2; }
+      .about_us_page .inner_wrapper .lower_column ul li {
+        margin-bottom: 15px; }
+  @media (max-width: 889px) {
+    .about_us_page > .inner_wrapper .lower_column {
+      padding: 0; }
+      .about_us_page > .inner_wrapper .lower_column p {
+        font-size: 14px; }
+      .about_us_page > .inner_wrapper .lower_column ul li {
+        font-size: 14px; }
+    .about_us_page > .about_us_section {
+      margin: 0 0 60px 0; } }
+
+/*----------------about_us_page END--------------------------------*/

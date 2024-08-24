@@ -1,0 +1,200 @@
+/*-------------footer component START---------------------*/
+
+footer{
+    width: 100%;
+    height: 293px;
+    background-position: center;
+    justify-content: center;
+    background-color: var(--footer_background);
+
+    .inner_wrapper{
+        width: var(--default_width);
+        justify-content: space-between;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 33px 0;
+
+        .upper_row {
+            width: 100%;
+            justify-content: center;
+            
+
+            .logo_inner_wrapper{
+                align-items: center;
+                column-gap: 7px;
+
+                img{
+                    width: 79px;
+                    height: 63px;
+                }
+
+                h1{
+                    font-family: 'GilroyBold', sans-serif;
+                    font-weight: normal;
+                    font-size: 18px;
+                    color: var(--white_permanent);
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                    line-height: 25px;
+                    margin: 0;
+                    text-align: center;
+                }
+            }
+        }
+
+        .middle_row {
+            height: 60px;
+            justify-content: space-between;
+
+            .nav_buttons_row {
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                column-gap: 7.5px;
+
+                .footer_button{
+                    text-decoration: none;
+                    color: var(--white_permanent);
+                    font-family: 'GilroyBold', sans-serif;
+                    font-size: 16px;
+                }
+            }
+
+            .contacts_row {
+                justify-content: center;
+                align-items: center;
+                column-gap: 43.2px;
+                width: 100%;
+
+                .rss{
+                    align-items: center;
+                    column-gap: 3px;
+
+                    svg{
+                        fill: var(--white_permanent);
+                    }
+                }
+
+                span{
+                    font-family: 'GilroyMedium', sans-serif;
+                    font-size: 14px;
+                    color: var(--white_permanent);
+                }
+
+                a{
+                    text-decoration: none;
+                }
+            }
+        }
+
+        .bottom_row{
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+
+            span {
+                font-family: 'GilroyMedium', sans-serif;
+                font-size: 12px;
+                color: var(--white_permanent);
+            }
+        }
+    }
+
+    @media (max-width: 1550px){
+
+        .inner_wrapper{
+
+            .upper_row{
+
+                .logo_inner_wrapper{
+
+                    h1{
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 889px){
+        height: unset;
+        
+        .inner_wrapper{
+            padding: 25px 0;
+            row-gap: 20px;
+
+
+            .upper_row{
+
+                .logo_inner_wrapper{
+
+                    h1{
+                        font-size: 16px;
+                    }
+
+                    img{
+                        width: 60px;
+                        height: 47px;
+                    }
+                }
+            }
+
+            .middle_row{
+                height: max-content;
+                flex-direction: row;
+                width: 100%;
+
+                .nav_buttons_row{
+                    flex-direction: column;
+                    row-gap: 8px;
+                }
+
+                .contacts_row{
+                    flex-direction: column;
+                    justify-content: space-evenly;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 529px){
+        .inner_wrapper{
+
+            .upper_row{
+
+                .logo_inner_wrapper{
+
+                    h1{
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: 424px) {
+        .inner_wrapper{
+
+            .upper_row{
+
+                .logo_inner_wrapper{
+
+                    h1{
+                        text-align: left;
+                    }
+                }
+            }
+
+            .middle_row{
+                flex-direction: column;
+                row-gap: 15px;
+
+                .contacts_row{
+                    row-gap: 8px;
+                }
+            }
+        }
+    }
+}
+
+/*-------------footer component END---------------------*/

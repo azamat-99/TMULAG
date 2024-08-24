@@ -1,0 +1,209 @@
+.signup_page {
+  justify-content: center;
+  margin: 80px 0; }
+  .signup_page .signup_container {
+    background-color: var(--container_background);
+    height: 479px;
+    box-sizing: border-box;
+    padding: 50px;
+    justify-content: space-between; }
+    .signup_page .signup_container .title {
+      font-family: 'UnboundedBlack', sans-serif;
+      font-size: 25px;
+      color: var(--text_black_default);
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0 0 14px 0; }
+    .signup_page .signup_container .form_block {
+      justify-content: space-between;
+      width: 391px;
+      justify-content: space-between; }
+      .signup_page .signup_container .form_block > h3 {
+        margin: 0 0 10px 0;
+        text-align: center;
+        font-family: 'GilroyMedium', sans-serif;
+        font-size: 18px;
+        color: var(--hover_color); }
+      .signup_page .signup_container .form_block label {
+        font-family: 'GilroySemiBold', sans-serif;
+        font-size: 12px;
+        color: var(--text_black_default); }
+      .signup_page .signup_container .form_block input {
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1.5px solid var(--input_border);
+        outline: none;
+        transition: all ease-in 0.15s;
+        font-family: 'GilroyRegular', sans-serif;
+        font-size: 14px; }
+        .signup_page .signup_container .form_block input:focus {
+          border-color: var(--hover_color); }
+        .signup_page .signup_container .form_block input::placeholder {
+          font-family: 'GilroyRegular', sans-serif;
+          font-size: 12px;
+          color: var(--text_grayed_out2); }
+  .signup_page .confirmation_num_container {
+    width: 751px;
+    height: 288px;
+    box-sizing: border-box;
+    padding: 50px;
+    justify-content: space-between;
+    background-color: var(--container_background); }
+    .signup_page .confirmation_num_container .inner_wrapper {
+      align-items: center;
+      row-gap: 13px; }
+      .signup_page .confirmation_num_container .inner_wrapper h2 {
+        font-family: 'GilroyBold', sans-serif;
+        font-size: 18px;
+        color: var(--hover_color);
+        font-weight: normal;
+        margin: 0; }
+      .signup_page .confirmation_num_container .inner_wrapper label {
+        font-family: 'GilroySemiBold', sans-serif;
+        font-size: 12px;
+        color: var(--text_black_default);
+        margin-bottom: 9px; }
+      .signup_page .confirmation_num_container .inner_wrapper input {
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1.5px solid var(--input_border);
+        outline: none;
+        transition: all ease-in 0.15s;
+        font-family: 'GilroyRegular', sans-serif;
+        font-size: 14px;
+        width: 391px; }
+        .signup_page .confirmation_num_container .inner_wrapper input:focus {
+          border-color: var(--hover_color); }
+        .signup_page .confirmation_num_container .inner_wrapper input::placeholder {
+          font-family: 'GilroyRegular', sans-serif;
+          font-size: 12px;
+          color: var(--text_grayed_out2); }
+  .signup_page .password_container {
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 50px;
+    width: 491px;
+    height: 371px;
+    justify-content: space-between;
+    background-color: var(--container_background); }
+    .signup_page .password_container .inner_wrapper {
+      width: 100%; }
+      .signup_page .password_container .inner_wrapper .title {
+        font-family: 'UnboundedBlack', sans-serif;
+        font-size: 25px;
+        color: var(--text_black_default);
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0 0 14px 0; }
+      .signup_page .password_container .inner_wrapper label {
+        font-family: 'GilroySemiBold', sans-serif;
+        font-size: 12px;
+        color: var(--text_black_default);
+        margin-bottom: 9px; }
+      .signup_page .password_container .inner_wrapper input {
+        box-sizing: border-box;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1.5px solid var(--input_border);
+        outline: none;
+        transition: all ease-in 0.15s;
+        font-family: 'GilroyRegular', sans-serif;
+        font-size: 14px; }
+        .signup_page .password_container .inner_wrapper input:focus {
+          border-color: var(--hover_color); }
+        .signup_page .password_container .inner_wrapper input::placeholder {
+          font-family: 'GilroyRegular', sans-serif;
+          font-size: 12px;
+          color: var(--text_grayed_out2); }
+  .signup_page .submit_button_block {
+    justify-content: center; }
+    .signup_page .submit_button_block .submit_button {
+      box-sizing: border-box;
+      padding: 9px 50px;
+      border: none;
+      border-radius: 5px;
+      font-family: 'GilroyMedium', sans-serif;
+      font-size: 16px;
+      color: var(--white_permanent);
+      cursor: pointer; }
+  @media (max-width: 889px) {
+    .signup_page .confirmation_num_container {
+      width: 90vw; } }
+  @media (max-width: 729px) {
+    .signup_page .signup_container {
+      height: 439px;
+      width: 451px; }
+      .signup_page .signup_container .title {
+        font-size: 23px; }
+      .signup_page .signup_container .form_block {
+        width: 100%; }
+        .signup_page .signup_container .form_block > h3 {
+          font-size: 17px; }
+        .signup_page .signup_container .form_block label {
+          font-size: 11px; }
+        .signup_page .signup_container .form_block .input_wrapper input, .signup_page .signup_container .form_block .input_wrapper select {
+          font-size: 13px;
+          padding: 9px; }
+      .signup_page .signup_container .login_button_block {
+        margin-top: 30px; }
+    .signup_page .confirmation_num_container {
+      height: 260px; }
+      .signup_page .confirmation_num_container .inner_wrapper h2 {
+        font-size: 17px; }
+      .signup_page .confirmation_num_container .inner_wrapper .label_input_block {
+        width: 70%; }
+        .signup_page .confirmation_num_container .inner_wrapper .label_input_block label {
+          font-size: 11px; }
+        .signup_page .confirmation_num_container .inner_wrapper .label_input_block .input_wrapper input, .signup_page .confirmation_num_container .inner_wrapper .label_input_block .input_wrapper select {
+          font-size: 13px;
+          padding: 9px;
+          width: 100%; }
+    .signup_page .password_container {
+      width: 70vw;
+      padding: 7vw;
+      height: 331px; }
+      .signup_page .password_container .inner_wrapper .title {
+        font-size: 21px; }
+      .signup_page .password_container .inner_wrapper .label_input_block {
+        width: 100%; }
+        .signup_page .password_container .inner_wrapper .label_input_block label {
+          font-size: 11px; }
+        .signup_page .password_container .inner_wrapper .label_input_block .input_wrapper input, .signup_page .password_container .inner_wrapper .label_input_block .input_wrapper select {
+          font-size: 13px;
+          padding: 9px;
+          width: 100%; }
+    .signup_page .submit_button_block .submit_button {
+      padding: 8px 35px;
+      font-size: 15px; } }
+  @media (max-width: 529px) {
+    .signup_page .signup_container {
+      width: 87vw;
+      height: 390px;
+      padding: 7vw; }
+      .signup_page .signup_container .title {
+        font-size: 19px; }
+      .signup_page .signup_container .form_block > h3 {
+        font-size: 16px; }
+      .signup_page .signup_container .submit_button_block .submit_button {
+        padding: 7px 40px;
+        font-size: 14px; }
+    .signup_page .confirmation_num_container {
+      padding: 7vw;
+      height: 240px; }
+      .signup_page .confirmation_num_container .inner_wrapper h2 {
+        font-size: 16px; }
+      .signup_page .confirmation_num_container .inner_wrapper .label_input_block {
+        width: 100%; }
+        .signup_page .confirmation_num_container .inner_wrapper .label_input_block .input_wrapper input {
+          width: 100%; }
+    .signup_page .password_container {
+      width: 90vw;
+      padding: 7vw;
+      height: 300px; }
+      .signup_page .password_container .inner_wrapper .title {
+        font-size: 19px; }
+    .signup_page .submit_button_block .submit_button {
+      padding: 7px 30px;
+      font-size: 14px; } }

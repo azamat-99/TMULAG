@@ -1,0 +1,19 @@
+/*----------------contacts_page START--------------------------------*/
+#contacts_page .banner_image img {
+  display: none; }
+
+#contacts_page .banner_image iframe {
+  display: block; }
+
+#contacts_page.active .banner_image::before {
+  content: unset; }
+
+@media (max-width: 729px) {
+  #contacts_page .banner_image img {
+    display: block; }
+  #contacts_page .banner_image iframe {
+    display: none; }
+  #contacts_page.active .banner_image::before {
+    content: ''; } }
+
+/*----------------contacts_page END--------------------------------*/
