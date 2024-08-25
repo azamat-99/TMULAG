@@ -193,7 +193,7 @@
         this.$router.push({ name: "login_page" });
       } else {        
         this.$router.push({name: 'profileTab',params: {tab: tab}})
-        // this.$store.state.currentTab = tab;
+        this.$store.state.currentTab = tab;
       }
     },
   },

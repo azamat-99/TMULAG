@@ -3,15 +3,10 @@
 
 import ChangePasswordTab from "@/components/online_application/ChangePasswordTab.vue";
 import legalData from "@/components/online_application/LegalData.vue";
-
 import DriversTab from "@/components/online_application/Drivers.vue";
-
-import CreateDriverTab from "@/components/online_application/DriverCreate.vue";
-
-import CreateTransportTab from "@/components/online_application/TransportCreate.vue";
-
 import CarsTab from "@/components/online_application/Transports.vue";
-
+import CreateDriverTab from "@/components/online_application/DriverCreate.vue";
+import CreateTransportTab from "@/components/online_application/TransportCreate.vue";
 import EPermitCreateTab from "@/components/online_application/EPermitCreate.vue";
 import EPermitHistoryTab from "@/components/online_application/EPermitHistory.vue";
 import HistoryTab from "@/components/online_application/HistoryTab.vue";
@@ -24,7 +19,7 @@ import UnloadPermissionTab from "@/components/online_application/UnloadPermissio
 export default {    
     components: 
     {
-        ProfileTab,
+    ProfileTab,
     DriversTab,
     CreateDriverTab,
     CreateTransportTab,
@@ -58,11 +53,9 @@ export default {
         individualTrailers: "individualTrailers",
         individualTrailerCreate: "individualTrailerCreate",
         individualTrailerEdit: "individualTrailerEdit",
-
         legalTrailers: "legalTrailers",
         legalTrailerCreate: "legalTrailerCreate",
         legalTrailerEdit: "legalTrailerEdit",
-
         individualCars: "individualCars",
         legalCars: "legalCars",
         legalCarCreate: "legalCarCreate",
@@ -79,6 +72,16 @@ export default {
 
       currentTab: "initialTab",
     };
+  },
+  methods: {
+    changeTab(tab) {
+      if (!this.$store.state.authenticated && tab != this.tabs.initialTab) {
+        this.$router.push({ name: "login_page" });
+      } else {        
+        this.$router.push({name: 'profileTab',params: {tab: tab}})
+        this.$store.state.currentTab = tab;
+      }
+    },
   },
   computed: {
     activeTab() {
@@ -98,7 +101,8 @@ export default {
         <h3 class="title">{{ $t("online_application_navbar.title") }}</h3>
 
         <!-- PROFILE -->
-        <div
+        <RouterLink
+        :to="tabs.profileTab"
           :class="`row flex-row ${
             $route.params.tab === tabs.profileTab ? 'active' : ''
           }`"
@@ -123,11 +127,12 @@ export default {
               stroke-linejoin="round"
             />
           </svg>
-          <RouterLink class="value" :to="tabs.profileTab">{{ this.$store.state.currentUserName }}</RouterLink>
-        </div>
+          <span class="value" >{{ this.$store.state.currentUserName }}</span>
+        </RouterLink>
 
         <!-- Данные Физ лица -->
-        <div
+        <RouterLink :to="tabs.individualDataTab"
+        
           :class="`row flex-row ${
             this.$store.state.currentTab === tabs.individualDataTab
               ? 'active'
@@ -140,11 +145,24 @@ export default {
           "
         >
           <img src="@/assets/icons/individual.svg" alt="" />
-          <RouterLink :to="tabs.individualDataTab" class="value">Данные учреждения (Физ. Лицо)</RouterLink>
-        </div>
+          <span  class="value">Данные учреждения (Физ. Лицо)</span>
+        </RouterLink>
 
         <!-- Водители -->
-        <div
+        <RouterLink
+        v-if="
+            activeTab === tabs.individualDataTab ||
+            activeTab === tabs.individualDrivers ||
+            activeTab === tabs.individualDriversCreate ||
+            activeTab === tabs.individualDriversEdit ||
+            activeTab === tabs.individualCars ||
+            activeTab === tabs.individualCarCreate ||
+            activeTab === tabs.individualCarEdit ||
+            activeTab === tabs.individualTrailerCreate ||
+            activeTab === tabs.individualTrailerEdit ||
+            activeTab === tabs.individualTrailers
+          "
+        :to="tabs.individualDrivers"
           :class="`row flex-row submenu ${
             this.$store.state.currentTab === tabs.individualDrivers ||
             this.$store.state.currentTab === tabs.individualDriversCreate ||
@@ -152,18 +170,6 @@ export default {
               ? 'active'
               : ''
           }`"
-          v-if="
-            this.$store.state.currentTab === tabs.individualDataTab ||
-            this.$store.state.currentTab === tabs.individualDrivers ||
-            this.$store.state.currentTab === tabs.individualDriversCreate ||
-            this.$store.state.currentTab === tabs.individualDriversEdit ||
-            this.$store.state.currentTab === tabs.individualCars ||
-            this.$store.state.currentTab === tabs.individualCarCreate ||
-            this.$store.state.currentTab === tabs.individualCarEdit ||
-            this.$store.state.currentTab === tabs.individualTrailerCreate ||
-            this.$store.state.currentTab === tabs.individualTrailerEdit ||
-            this.$store.state.currentTab === tabs.individualTrailers
-          "
           @click="
             () => {
               this.$store.state.currentTab = tabs.individualDrivers;
@@ -172,10 +178,24 @@ export default {
         >
           <img src="@/assets/icons/driver.svg" alt="" />
           <span class="value">Водители</span>
-        </div>
+        </RouterLink>
 
         <!-- Машины  -->
-        <div
+
+        <RouterLink
+        v-if="
+            activeTab === tabs.individualDataTab ||
+            activeTab === tabs.individualDrivers ||
+            activeTab === tabs.individualDriversCreate ||
+            activeTab === tabs.individualDriversEdit ||
+            activeTab === tabs.individualCars ||
+            activeTab === tabs.individualCarCreate ||
+            activeTab === tabs.individualCarEdit ||
+            activeTab === tabs.individualTrailers ||
+            activeTab === tabs.individualTrailerCreate ||
+            activeTab === tabs.individualTrailerEdit
+          "
+        :to="tabs.individualCars"
           :class="`row flex-row submenu ${
             this.$store.state.currentTab === tabs.individualCars ||
             this.$store.state.currentTab === tabs.individualCarCreate ||
@@ -183,18 +203,6 @@ export default {
               ? 'active'
               : ''
           }`"
-          v-if="
-            this.$store.state.currentTab === tabs.individualDataTab ||
-            this.$store.state.currentTab === tabs.individualDrivers ||
-            this.$store.state.currentTab === tabs.individualDriversCreate ||
-            this.$store.state.currentTab === tabs.individualDriversEdit ||
-            this.$store.state.currentTab === tabs.individualCars ||
-            this.$store.state.currentTab === tabs.individualCarCreate ||
-            this.$store.state.currentTab === tabs.individualCarEdit ||
-            this.$store.state.currentTab === tabs.individualTrailers ||
-            this.$store.state.currentTab === tabs.individualTrailerCreate ||
-            this.$store.state.currentTab === tabs.individualTrailerEdit
-          "
           @click="
             () => {
               this.$store.state.currentTab = tabs.individualCars;
@@ -203,10 +211,23 @@ export default {
         >
           <img src="@/assets/icons/car.svg" alt="" />
           <span class="value">Машины</span>
-        </div>
+        </RouterLink>
 
         <!-- Прицепы   -->
-        <div
+        <RouterLink
+        v-if="
+            activeTab === tabs.individualDataTab ||
+            activeTab === tabs.individualDrivers ||
+            activeTab === tabs.individualDriversCreate ||
+            activeTab === tabs.individualDriversEdit ||
+            activeTab === tabs.individualCars ||
+            activeTab === tabs.individualCarCreate ||
+            activeTab === tabs.individualCarEdit ||
+            activeTab === tabs.individualTrailers ||
+            activeTab === tabs.individualTrailerCreate ||
+            activeTab === tabs.individualTrailerEdit
+          "
+        :to="tabs.individualTrailers"
           :class="`row flex-row submenu ${
             this.$store.state.currentTab === tabs.individualTrailers ||
             this.$store.state.currentTab === tabs.individualTrailerCreate ||
@@ -214,18 +235,6 @@ export default {
               ? 'active'
               : ''
           }`"
-          v-if="
-            this.$store.state.currentTab === tabs.individualDataTab ||
-            this.$store.state.currentTab === tabs.individualDrivers ||
-            this.$store.state.currentTab === tabs.individualDriversCreate ||
-            this.$store.state.currentTab === tabs.individualDriversEdit ||
-            this.$store.state.currentTab === tabs.individualCars ||
-            this.$store.state.currentTab === tabs.individualCarCreate ||
-            this.$store.state.currentTab === tabs.individualCarEdit ||
-            this.$store.state.currentTab === tabs.individualTrailers ||
-            this.$store.state.currentTab === tabs.individualTrailerCreate ||
-            this.$store.state.currentTab === tabs.individualTrailerEdit
-          "
           @click="
             () => {
               this.$store.state.currentTab = tabs.individualTrailers;
@@ -234,10 +243,11 @@ export default {
         >
           <img src="@/assets/icons/trailer.svg" alt="" />
           <span class="value">Прицепы</span>
-        </div>
+        </RouterLink>
 
         <!-- Данные Юр лица -->
-        <div
+        <RouterLink
+        :to="tabs.legalData"
           :class="`row flex-row ${
             this.$store.state.currentTab === tabs.legalData ? 'active' : ''
           }`"
@@ -249,10 +259,23 @@ export default {
         >
           <img src="@/assets/icons/legal_entity.svg" alt="" />
           <span class="value">Данные учреждения (Юр. Лицо)</span>
-        </div>
+        </RouterLink>
 
         <!-- Водители -->
-        <div
+        <RouterLink
+        v-if="
+            activeTab === tabs.legalData ||
+            activeTab === tabs.legalDrivers ||
+            activeTab === tabs.legalDriverCreate ||
+            activeTab === tabs.legalDriverEdit ||
+            activeTab === tabs.legalCars ||
+            activeTab === tabs.legalCarCreate ||
+            activeTab === tabs.legalCarEdit ||
+            activeTab === tabs.legalTrailers ||
+            activeTab === tabs.legalTrailerCreate ||
+            activeTab === tabs.legalTrailerEdit
+          "
+        :to="tabs.legalDrivers"
           :class="`row flex-row submenu ${
             this.$store.state.currentTab === tabs.legalDrivers ||
             this.$store.state.currentTab === tabs.legalDriverCreate ||
@@ -260,18 +283,7 @@ export default {
               ? 'active'
               : ''
           }`"
-          v-if="
-            this.$store.state.currentTab === tabs.legalData ||
-            this.$store.state.currentTab === tabs.legalDrivers ||
-            this.$store.state.currentTab === tabs.legalDriverCreate ||
-            this.$store.state.currentTab === tabs.legalDriverEdit ||
-            this.$store.state.currentTab === tabs.legalCars ||
-            this.$store.state.currentTab === tabs.legalCarCreate ||
-            this.$store.state.currentTab === tabs.legalCarEdit ||
-            this.$store.state.currentTab === tabs.legalTrailers ||
-            this.$store.state.currentTab === tabs.legalTrailerCreate ||
-            this.$store.state.currentTab === tabs.legalTrailerEdit
-          "
+          
           @click="
             () => {
               this.$store.state.currentTab = tabs.legalDrivers;
@@ -280,10 +292,23 @@ export default {
         >
           <img src="@/assets/icons/driver.svg" alt="" />
           <span class="value">Водители</span>
-        </div>
+        </RouterLink>
 
         <!-- Машины  -->
-        <div
+        <RouterLink
+        v-if="
+            activeTab === tabs.legalData ||
+            activeTab === tabs.legalDrivers ||
+            activeTab === tabs.legalDriverCreate ||
+            activeTab === tabs.legalDriverEdit ||
+            activeTab === tabs.legalCars ||
+            activeTab === tabs.legalCarCreate ||
+            activeTab === tabs.legalCarEdit ||
+            activeTab === tabs.legalTrailers ||
+            activeTab === tabs.legalTrailerCreate ||
+            activeTab === tabs.legalTrailerEdit
+          "
+        :to="tabs.legalCars"
           :class="`row flex-row submenu ${
             this.$store.state.currentTab === tabs.legalCars ||
             this.$store.state.currentTab === tabs.legalCarCreate ||
@@ -291,18 +316,6 @@ export default {
               ? 'active'
               : ''
           }`"
-          v-if="
-            this.$store.state.currentTab === tabs.legalData ||
-            this.$store.state.currentTab === tabs.legalDrivers ||
-            this.$store.state.currentTab === tabs.legalDriverCreate ||
-            this.$store.state.currentTab === tabs.legalDriverEdit ||
-            this.$store.state.currentTab === tabs.legalCars ||
-            this.$store.state.currentTab === tabs.legalCarCreate ||
-            this.$store.state.currentTab === tabs.legalCarEdit ||
-            this.$store.state.currentTab === tabs.legalTrailers ||
-            this.$store.state.currentTab === tabs.legalTrailerCreate ||
-            this.$store.state.currentTab === tabs.legalTrailerEdit
-          "
           @click="
             () => {
               this.$store.state.currentTab = tabs.legalCars;
@@ -311,10 +324,23 @@ export default {
         >
           <img src="@/assets/icons/car.svg" alt="" />
           <span class="value">Машины</span>
-        </div>
+        </RouterLink>
 
         <!-- Прицепы  -->
-        <div
+        <RouterLink
+        v-if="
+            activeTab === tabs.legalData ||
+            activeTab === tabs.legalDrivers ||
+            activeTab === tabs.legalDriverCreate ||
+            activeTab === tabs.legalDriverEdit ||
+            activeTab === tabs.legalCars ||
+            activeTab === tabs.legalCarCreate ||
+            activeTab === tabs.legalCarEdit ||
+            activeTab === tabs.legalTrailers ||
+            activeTab === tabs.legalTrailerCreate ||
+            activeTab === tabs.legalTrailerEdit
+          "
+        :to="tabs.legalTrailers"
           :class="`row flex-row submenu ${
             this.$store.state.currentTab === tabs.legalTrailers ||
             this.$store.state.currentTab === tabs.legalTrailerCreate ||
@@ -322,18 +348,6 @@ export default {
               ? 'active'
               : ''
           }`"
-          v-if="
-            this.$store.state.currentTab === tabs.legalData ||
-            this.$store.state.currentTab === tabs.legalDrivers ||
-            this.$store.state.currentTab === tabs.legalDriverCreate ||
-            this.$store.state.currentTab === tabs.legalDriverEdit ||
-            this.$store.state.currentTab === tabs.legalCars ||
-            this.$store.state.currentTab === tabs.legalCarCreate ||
-            this.$store.state.currentTab === tabs.legalCarEdit ||
-            this.$store.state.currentTab === tabs.legalTrailers ||
-            this.$store.state.currentTab === tabs.legalTrailerCreate ||
-            this.$store.state.currentTab === tabs.legalTrailerEdit
-          "
           @click="
             () => {
               this.$store.state.currentTab = tabs.legalTrailers;
@@ -342,10 +356,11 @@ export default {
         >
           <img src="@/assets/icons/trailer.svg" alt="" />
           <span class="value">Прицепы</span>
-        </div>
+        </RouterLink>
 
         <!-- (E-permit) -->
-        <div
+        <RouterLink
+        :to="tabs.ePermitHistory"
           :class="`row flex-row ${
             this.$store.state.currentTab === tabs.ePermitHistory ||
             this.$store.state.currentTab === tabs.ePermitCreate
@@ -374,9 +389,10 @@ export default {
             />
           </svg>
           <span class="value">Заявка на Дозвол (E-permit)</span>
-        </div>
+        </RouterLink>
 
-        <div
+        <RouterLink
+        :to="tabs.loadPermissionTab"
           :class="`row flex-row ${
             this.$store.state.currentTab === tabs.loadPermissionTab
               ? 'active'
@@ -406,9 +422,10 @@ export default {
           <span class="value">{{
             $t("online_application_navbar.load_permission_tab")
           }}</span>
-        </div>
+        </RouterLink>
 
-        <div
+        <RouterLink
+        :to="tabs.unloadPermissionTab"
           :class="`row flex-row ${
             this.$store.state.currentTab === tabs.unloadPermissionTab
               ? 'active'
@@ -439,9 +456,10 @@ export default {
           <span class="value">{{
             $t("online_application_navbar.unload_permission_tab")
           }}</span>
-        </div>
+        </RouterLink>
 
-        <div
+        <RouterLink
+        :to="tabs.onlineApplicationTab"
           :class="`row flex-row ${
             this.$store.state.currentTab === tabs.onlineApplicationTab
               ? 'active'
@@ -471,9 +489,10 @@ export default {
           <span class="value">{{
             $t("online_application_navbar.online_application_tab")
           }}</span>
-        </div>
+        </RouterLink>
 
-        <div
+        <RouterLink
+        :to="tabs.historyTab"
           :class="`row flex-row ${
             this.$store.state.currentTab === tabs.historyTab ? 'active' : ''
           }`"
@@ -499,9 +518,10 @@ export default {
             />
           </svg>
           <span class="value">{{ $t("history_tab.title") }}</span>
-        </div>
+        </RouterLink>
 
-        <div
+        <RouterLink
+        :to="tabs.changePasswordTab"
           :class="`row flex-row ${
             this.$store.state.currentTab === tabs.changePasswordTab
               ? 'active'
@@ -529,7 +549,7 @@ export default {
           <span class="value">{{
             $t("online_application_navbar.change_password_tab")
           }}</span>
-        </div>
+        </RouterLink>
 
         <div class="row flex-row" @click="this.$store.state.logout">
           <svg
@@ -552,7 +572,102 @@ export default {
           }}</span>
         </div>
       </div>
-      <Component :is="activeTab"></Component>
+      <!-- <Component :is="activeTab"></Component> -->
+      
+      
+
+
+
+
+      <ProfileTab v-if="activeTab === tabs.profileTab" />
+
+      <individualDataTab
+        v-if="activeTab === tabs.individualDataTab"
+      />
+
+      <DriversTab
+        v-if="
+          activeTab === tabs.individualDrivers ||
+          activeTab === tabs.legalDrivers
+        "
+        :currentTab="this.$store.state.currentTab"
+        :changeTab="this.changeTab"
+        :tabs="this.tabs"
+      />
+
+      <legalData v-if="activeTab === tabs.legalData" />
+      <CarsTab
+        v-if="
+          activeTab === tabs.individualCars ||
+          activeTab === tabs.legalCars
+        "
+        :currentTab="this.$store.state.currentTab"
+        :changeTab="this.changeTab"
+        :tabs="this.tabs"
+      />
+
+      <CreateDriverTab
+        v-if="
+          activeTab === tabs.individualDriversCreate ||
+          activeTab === tabs.individualDriversEdit ||
+          activeTab === tabs.legalDriverCreate ||
+          activeTab === tabs.legalDriverEdit
+        "
+        :currentTab="this.$store.state.currentTab"
+        :changeTab="this.changeTab"
+        :tabs="this.tabs"
+      />
+
+      <CreateTransportTab
+        v-if="
+          activeTab === tabs.individualCarCreate ||
+          activeTab === tabs.individualCarEdit ||
+          activeTab === tabs.individualTrailerCreate ||
+          activeTab === tabs.individualTrailerEdit ||
+          activeTab === tabs.legalCarCreate ||
+          activeTab === tabs.legalCarEdit ||
+          activeTab === tabs.legalTrailerCreate ||
+          activeTab === tabs.legalTrailerEdit
+        "
+        :currentTab="this.$store.state.currentTab"
+        :changeTab="this.changeTab"
+        :tabs="this.tabs"
+      />
+
+      <CarsTab
+        v-if="
+          activeTab === tabs.individualTrailers ||
+          activeTab === tabs.legalTrailers
+        "
+        :currentTab="this.$store.state.currentTab"
+        :changeTab="this.changeTab"
+        :tabs="this.tabs"
+      />
+
+      <EPermitHistoryTab
+        v-if="activeTab === tabs.ePermitHistory"
+        :changeTab="this.changeTab"
+        :tabs="this.tabs"
+      />
+      <EPermitCreateTab
+        v-if="activeTab === tabs.ePermitCreate"
+        :changeTab="this.changeTab"
+        :tabs="this.tabs"
+      />
+      <LoadPermissionTab
+        v-if="activeTab === tabs.loadPermissionTab"
+      />
+      <UnloadPermissionTab
+        v-if="activeTab === tabs.unloadPermissionTab"
+      />
+      <OnlineApplicationTab
+        v-if="activeTab === tabs.onlineApplicationTab"
+      />
+      <HistoryTab v-if="activeTab === tabs.historyTab" />
+      <ChangePasswordTab
+        v-if="activeTab === tabs.changePasswordTab"
+      />
+
     </div>
 </div>
 </template>

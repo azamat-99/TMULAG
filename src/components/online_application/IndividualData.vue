@@ -323,7 +323,7 @@ export default {
       .finally(() => {
         this.$store.state.preLoader = false;
       });
-
+  
     window.axios
       .get(this.$store.state.backendRoutes.individualClient, {
         headers: {
