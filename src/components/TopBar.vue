@@ -59,10 +59,6 @@
             $t("topbar.online_application_page")
           }}</span></router-link
         >
-
-        <router-link :to="{ name: 'online' }">
-          <span class="hover_underline_white"> Online</span></router-link
-        >
         <router-link :to="{ name: 'news_page', params: { pageId: 1 } }">
           <span class="hover_underline_white">{{
             $t("topbar.news_page")

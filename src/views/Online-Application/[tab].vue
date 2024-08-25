@@ -78,7 +78,7 @@ export default {
       if (!this.$store.state.authenticated && tab != this.tabs.initialTab) {
         this.$router.push({ name: "login_page" });
       } else {        
-        this.$router.push({name: 'profileTab',params: {tab: tab}})
+        this.$router.push({name: 'dynamic_Tab_page',params: {tab: tab}})
         this.$store.state.currentTab = tab;
       }
     },
@@ -104,7 +104,7 @@ export default {
         <RouterLink
         :to="tabs.profileTab"
           :class="`row flex-row ${
-            $route.params.tab === tabs.profileTab ? 'active' : ''
+            activeTab === tabs.profileTab ? 'active' : ''
           }`"
           @click="
             () => {

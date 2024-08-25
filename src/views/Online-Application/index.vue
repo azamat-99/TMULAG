@@ -192,7 +192,7 @@
       if (!this.$store.state.authenticated && tab != this.tabs.initialTab) {
         this.$router.push({ name: "login_page" });
       } else {        
-        this.$router.push({name: 'profileTab',params: {tab: tab}})
+        this.$router.push({name: 'dynamic_Tab_page',params: {tab: tab}})
         this.$store.state.currentTab = tab;
       }
     },

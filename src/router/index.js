@@ -5,14 +5,13 @@ import LoginView from "../views/LoginView.vue";
 import MainView from "../views/MainView.vue";
 import NewsView from "../views/NewsView.vue";
 import NotFound from "../views/NotFound.vue";
-import OnlineApplicationView from "../views/OnlineApplicationView.vue";
 import PasswordResetView from "../views/PasswordResetView.vue";
 import ServicesView from "../views/ServicesView.vue";
 import SignupView from "../views/SignupView.vue";
 import SingleNewsView from "../views/SingleNewsView.vue";
 
 import store from "../store/";
-import Online from "../views/Online-Application/index.vue";
+import OnlineApplicationView from "../views/Online-Application/index.vue";
 import Tab from "@/views/Online-Application/[tab].vue";
 
 const routes = [
@@ -28,22 +27,15 @@ const routes = [
   },
   {
     path: "/online-application",
-    name: "online_application_page",
-    component: OnlineApplicationView,
-  },
-  {
-    path: "/online",
-    // name: 'online',
-    // component: Online,
     children: [
       {
         path: "",
-        name: 'online',
-        component: Online,
+        component: OnlineApplicationView,
+        name: "online_application_page",
       },
       {
         path: '/:tab',
-        name: 'profileTab',
+        name: 'dynamic_Tab_page',
         component: Tab
       },
     ]
