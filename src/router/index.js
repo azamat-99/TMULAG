@@ -12,6 +12,8 @@ import SignupView from "../views/SignupView.vue";
 import SingleNewsView from "../views/SingleNewsView.vue";
 
 import store from "../store/";
+import Online from "../views/Online-Application/index.vue";
+import Tab from "@/views/Online-Application/[tab].vue";
 
 const routes = [
   {
@@ -28,6 +30,23 @@ const routes = [
     path: "/online-application",
     name: "online_application_page",
     component: OnlineApplicationView,
+  },
+  {
+    path: "/online",
+    // name: 'online',
+    // component: Online,
+    children: [
+      {
+        path: "",
+        name: 'online',
+        component: Online,
+      },
+      {
+        path: '/:tab',
+        name: 'profileTab',
+        component: Tab
+      },
+    ]
   },
   {
     path: "/news-all/:pageId",
